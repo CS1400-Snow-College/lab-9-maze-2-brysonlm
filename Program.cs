@@ -17,6 +17,7 @@ for (int i = 0; i < mapRows.Length; i++)
 int cursorTop = 1;
 int cursorLeft = 1;
 int score = 0;
+Random rand = new Random();
 Console.SetCursorPosition(cursorLeft, cursorTop);
 DateTime startTime = DateTime.Now;
 
@@ -42,35 +43,28 @@ do
     {
         char nextCell = mapRows[proposedTop][proposedLeft];
 
-        // walls and the locked doors
         if (nextCell != '*' && nextCell != '|') 
         {
             cursorTop = proposedTop;
             cursorLeft = proposedLeft;
             Console.SetCursorPosition(cursorLeft, cursorTop);
 
-            // to collect the coins
             if (nextCell == '^')
             {
                 score += 100;
                 
-                // get rid of coins
-                char[] row = mapRows[cursorTop].ToCharArray();
-                row[cursorLeft] = ' ';
-                mapRows[cursorTop] = new string(row);
+                char[] playerRow = mapRows[cursorTop].ToCharArray();
+                playerRow[cursorLeft] = ' ';
+                mapRows[cursorTop] = new string(playerRow);
                 
-                // get rid of coins from the screen
                 Console.Write(" ");
                 Console.SetCursorPosition(cursorLeft, cursorTop); 
-                
-                // to open the doors
+
                 if (score >= 1000)
                 {
                     for (int i = 0; i < mapRows.Length; i++)
                     {
                         mapRows[i] = mapRows[i].Replace('|', ' ');
-                        
-                        // redraw to get rid of doors
                         if (mapRows[i].Contains("$") || mapRows[i].Contains("#")) 
                         {
                             Console.SetCursorPosition(0, i);
@@ -92,4 +86,43 @@ do
             }
         }
     }
+
+    // move bad guys
+    for (int r = mapRows.Length - 1; r >= 0; r--) 
+    {
+        for (int c = mapRows[r].Length - 1; c >= 0; c--)
+        {
+            if (mapRows[r][c] == '%')
+            {
+                // choosing left or right
+                int direction = rand.Next(0, 2) == 0 ? -1 : 1;
+                int newCol = c + direction;
+
+                // moving
+                if (mapRows[r][newCol] == ' ' || (r == cursorTop && newCol == cursorLeft)) 
+                {
+                    char[] enemyRow = mapRows[r].ToCharArray();
+                    enemyRow[c] = ' ';
+                    enemyRow[newCol] = '%';
+                    mapRows[r] = new string(enemyRow);
+                    
+                    Console.SetCursorPosition(c, r);
+                    Console.Write(" ");
+                    Console.SetCursorPosition(newCol, r);
+                    Console.Write("%");
+                }
+            }
+        }
+    }
+
+    // see if the bad guys hit you
+    if (mapRows[cursorTop][cursorLeft] == '%')
+    {
+        Console.Clear();
+        Console.WriteLine("You Lose! A bad guy caught you.");
+        break;
+    }
+    
+    Console.SetCursorPosition(cursorLeft, cursorTop); // put cursor back on player
+
 } while (input != ConsoleKey.Escape);
