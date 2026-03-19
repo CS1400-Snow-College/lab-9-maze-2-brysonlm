@@ -16,8 +16,8 @@ for (int i = 0; i < mapRows.Length; i++)
 
 int cursorTop = 1;
 int cursorLeft = 1;
+int score = 0;
 Console.SetCursorPosition(cursorLeft, cursorTop);
-
 DateTime startTime = DateTime.Now;
 
 // adding the movement
@@ -42,19 +42,51 @@ do
     {
         char nextCell = mapRows[proposedTop][proposedLeft];
 
-        // walls
-        if (nextCell != '*') 
+        // walls and the locked doors
+        if (nextCell != '*' && nextCell != '|') 
         {
             cursorTop = proposedTop;
             cursorLeft = proposedLeft;
             Console.SetCursorPosition(cursorLeft, cursorTop);
 
-            // detect if win
+            // to collect the coins
+            if (nextCell == '^')
+            {
+                score += 100;
+                
+                // get rid of coins
+                char[] row = mapRows[cursorTop].ToCharArray();
+                row[cursorLeft] = ' ';
+                mapRows[cursorTop] = new string(row);
+                
+                // get rid of coins from the screen
+                Console.Write(" ");
+                Console.SetCursorPosition(cursorLeft, cursorTop); 
+                
+                // to open the doors
+                if (score >= 1000)
+                {
+                    for (int i = 0; i < mapRows.Length; i++)
+                    {
+                        mapRows[i] = mapRows[i].Replace('|', ' ');
+                        
+                        // redraw to get rid of doors
+                        if (mapRows[i].Contains("$") || mapRows[i].Contains("#")) 
+                        {
+                            Console.SetCursorPosition(0, i);
+                            Console.Write(mapRows[i]);
+                            Console.SetCursorPosition(cursorLeft, cursorTop);
+                        }
+                    }
+                }
+            }
+
             if (nextCell == '#') 
             {
                 TimeSpan timeTaken = DateTime.Now - startTime;
                 Console.Clear();
                 Console.WriteLine("Congrats! You got it!!!!");
+                Console.WriteLine("Score: " + score);
                 Console.WriteLine("Time: " + Math.Round(timeTaken.TotalSeconds) + " seconds");
                 break;
             }
