@@ -1,0 +1,15 @@
+C:\Users\leonb\my-code-dir\lab-9-maze-2-brysonlm\bin\Debug\net10.0\lab-9-maze-2-brysonlm.exe
+C:\Users\leonb\my-code-dir\lab-9-maze-2-brysonlm\bin\Debug\net10.0\lab-9-maze-2-brysonlm.deps.json
+C:\Users\leonb\my-code-dir\lab-9-maze-2-brysonlm\bin\Debug\net10.0\lab-9-maze-2-brysonlm.runtimeconfig.json
+C:\Users\leonb\my-code-dir\lab-9-maze-2-brysonlm\bin\Debug\net10.0\lab-9-maze-2-brysonlm.dll
+C:\Users\leonb\my-code-dir\lab-9-maze-2-brysonlm\bin\Debug\net10.0\lab-9-maze-2-brysonlm.pdb
+C:\Users\leonb\my-code-dir\lab-9-maze-2-brysonlm\obj\Debug\net10.0\lab-9-maze-2-brysonlm.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\leonb\my-code-dir\lab-9-maze-2-brysonlm\obj\Debug\net10.0\lab-9-maze-2-brysonlm.AssemblyInfoInputs.cache
+C:\Users\leonb\my-code-dir\lab-9-maze-2-brysonlm\obj\Debug\net10.0\lab-9-maze-2-brysonlm.AssemblyInfo.cs
+C:\Users\leonb\my-code-dir\lab-9-maze-2-brysonlm\obj\Debug\net10.0\lab-9-maze-2-brysonlm.csproj.CoreCompileInputs.cache
+C:\Users\leonb\my-code-dir\lab-9-maze-2-brysonlm\obj\Debug\net10.0\lab-9-maze-2-brysonlm.sourcelink.json
+C:\Users\leonb\my-code-dir\lab-9-maze-2-brysonlm\obj\Debug\net10.0\lab-9-maze-2-brysonlm.dll
+C:\Users\leonb\my-code-dir\lab-9-maze-2-brysonlm\obj\Debug\net10.0\refint\lab-9-maze-2-brysonlm.dll
+C:\Users\leonb\my-code-dir\lab-9-maze-2-brysonlm\obj\Debug\net10.0\lab-9-maze-2-brysonlm.pdb
+C:\Users\leonb\my-code-dir\lab-9-maze-2-brysonlm\obj\Debug\net10.0\lab-9-maze-2-brysonlm.genruntimeconfig.cache
+C:\Users\leonb\my-code-dir\lab-9-maze-2-brysonlm\obj\Debug\net10.0\ref\lab-9-maze-2-brysonlm.dll
